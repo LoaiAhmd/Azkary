@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#FF0000FF</color>
+    <color name="green">#00FF00</color>
+    <color name="red">#FF0000</color>
+    <color name="cyan">#ff12a4af</color>
+    <color name="cyan_light">#ff80cbc4</color>
+    <color name="purple">#AA66CC</color>
+    <color name="orange">#FF8800</color>
+    <color name="gray_light">#48464C</color>
+
+    <!--
+    <color name="cyan">@android:color/car_cyan_700</color>
+    <color name="purple">@android:color/holo_purple</color>
+    <color name="orange">@android:color/holo_orange_dark</color>
+    <color name="gray_light">@color/m3_ref_palette_neutral30</color>
+    -->
+</resources>

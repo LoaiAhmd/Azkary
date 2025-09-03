@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="string_app_name">Muslims Azkar</string>
+    <string name="string_morning_azkar">Morning Azkar</string>
+    <string name="string_evening_azkar">Evening Azkar</string>
+    <string name="string_tasbeeh">Tasbeeh</string>
+    <string name="string_count"> 0 </string>
+
+    <!-- Missing strings -->
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+</resources>

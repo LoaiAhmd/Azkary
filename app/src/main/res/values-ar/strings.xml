@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="string_evening_azkar"> أذكار المساء </string>
+    <string name="string_tasbeeh"> تسبيح </string>
+    <string name="string_app_name">أذكار المسلم </string>
+    <string name="string_morning_azkar"> أذكار الصباح </string>
+
+    <!-- Missing strings translated -->
+    <string name="next">التالي</string>
+    <string name="previous">السابق</string>
+    <string name="lorem_ipsum">نص افتراضي للتجربة</string>
+    <string name="first_fragment_label">الشاشة الأولى</string>
+    <string name="second_fragment_label">الشاشة الثانية</string>
+</resources>
