@@ -1,22 +1,21 @@
 package com.example.myapplication;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import com.example.myapplication.databinding.ActivityMorningAzkarBinding;
-import com.google.android.material.snackbar.Snackbar;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Vector;
 
 public class MorningAzkar extends AppCompatActivity {
 
+    Vector<Zekir_> listAzkar = new Vector<>();;
+    DB_Helper_MorningAzkar dbHelperMorningAzkar;
     private ActivityMorningAzkarBinding binding;
-    List<Zekir_> azkarList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,23 +58,28 @@ public class MorningAzkar extends AppCompatActivity {
 
  */
 
-        // ViewBinding
         binding = ActivityMorningAzkarBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Toolbar
-        setSupportActionBar(binding.toolbar);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        dbHelperMorningAzkar = new DB_Helper_MorningAzkar(MorningAzkar.this);
+        TextView txtv_zekirBox = findViewById(R.id.id_zekr_box);
+
+        for (int i = 0; i < AzkarData.Vz_Morning.size(); i++){
+            listAzkar.add(new Zekir_(AzkarData.Vz_Morning.get(i).get_zekir(),
+                    AzkarData.Vz_Morning.get(i).get_counts(),
+                    AzkarData.Vz_Morning.get(i).get_category()));
+
+            dbHelperMorningAzkar.addAzkar(listAzkar.get(i).get_zekir(),
+                    listAzkar.get(i).get_counts(),
+                    listAzkar.get(i).get_category());
+
+            txtv_zekirBox.setText(listAzkar.get(i).get_zekir().toString());
         }
 
-        MorningAzkarAdapter morningAzkarAdapter = new MorningAzkarAdapter(azkarList);
-
-        RecyclerView rvNumbers = findViewById(R.id.id_recyclerView);
-        rvNumbers.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-        rvNumbers.setAdapter(morningAzkarAdapter);
-
+        Cursor cursor = dbHelperMorningAzkar.fetchAll();
+        MorningAzkarAdapter adapter = new MorningAzkarAdapter(cursor);
+        binding.idRecyclerView.setAdapter(adapter);
+        binding.idRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
@@ -86,5 +90,4 @@ public class MorningAzkar extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

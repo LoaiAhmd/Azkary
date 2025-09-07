@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,41 +14,41 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MorningAzkarAdapter extends RecyclerView.Adapter<MorningAzkarAdapter.ViewHolder> {
+public class MorningAzkarAdapter extends RecyclerView.Adapter<MorningAzkarAdapter.ViewHolder>{
 
-    List<Zekir_> azkarList = new ArrayList<>();
+    public Cursor cursor;
 
-    public MorningAzkarAdapter(List<Zekir_> azkarList) {
-        this.azkarList = azkarList;
+    public MorningAzkarAdapter(Cursor cursor) {
+        this.cursor = cursor;
     }
 
     @NonNull
     @Override
     public @NotNull MorningAzkarAdapter.ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_zekr, parent, false);
-        return new ViewHolder(itemView);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_zekr,parent,false);
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull MorningAzkarAdapter.ViewHolder holder, int position) {
-        holder.txtv_zekrBox.setText(azkarList.get(position).get_zekir());
-        holder.btn_count.setText(String.valueOf(azkarList.get(position).get_counts()));
+        if(!cursor.moveToPosition(position)) return;
     }
 
     @Override
     public int getItemCount() {
-        return azkarList.size();
+        return cursor.getCount();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txtv_zekrBox;
-        Button btn_count;
-        ImageButton btn_copy;
+        public TextView txtv_zekir;
+        public Button btn_counts;
+        MorningAzkarAdapter morningAzkarAdapter;
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            txtv_zekrBox = itemView.findViewById(R.id.id_zekr_box);
-            btn_count = itemView.findViewById(R.id.id_count_btn);
-            btn_copy = itemView.findViewById(R.id.id_copy_btn);
+            txtv_zekir = itemView.findViewById(R.id.id_zekr_box);
+            btn_counts = itemView.findViewById(R.id.id_count_btn);
+
+            DB_Helper_MorningAzkar myDB = new DB_Helper_MorningAzkar(itemView.getContext());
         }
     }
 }
