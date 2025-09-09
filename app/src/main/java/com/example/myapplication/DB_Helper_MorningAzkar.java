@@ -11,17 +11,26 @@ import androidx.annotation.Nullable;
 import java.util.Vector;
 
 public class DB_Helper_MorningAzkar extends SQLiteOpenHelper{
-    private static String DataBaseName = "AzkarDataBase";
+    private static String DataBaseName = "AzkarDataBase.db";
     SQLiteDatabase AzkarDataBase;
+    AzkarData ad = new AzkarData();
     public DB_Helper_MorningAzkar(@Nullable Context context) { super(context, DataBaseName, null, 1);}
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE tbl_morning_azkar (" +
-                "col_id INTEGER PRIMARY KEY," +
+                "col_id INTEGER PRIMARY KEY autoincrement," +
                 "col_zekir TEXT NOT NULL," +
                 "col_counts INTEGER," +
                 "col_category CHAR(1))");
+
+        for (int i = 0; i < ad.size(); i++) {
+            ContentValues cv = new ContentValues();
+            cv.put("col_zekir", ad.getZekir(i).get_zekir());
+            cv.put("col_counts", ad.getZekir(i).get_counts());
+            cv.put("col_category", (byte) String.valueOf(ad.getZekir(i).get_category()).charAt(0));
+            db.insert("tbl_morning_azkar", null, cv);
+        }
     }
 
     @Override
@@ -30,22 +39,22 @@ public class DB_Helper_MorningAzkar extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public void addAzkar(String zekir, int counts, char category){
-        ContentValues row = new ContentValues();
-        row.put("col_zekir", zekir);
-        row.put("col_counts", counts);
-        row.put("col_category", (byte) String.valueOf(category).charAt(0));
-
-        AzkarDataBase = getWritableDatabase();
-        AzkarDataBase.insert("tbl_morning_azkar", null, row);
-        AzkarDataBase.close();
+    public void insertIntoDB(String zekir, int counts, char category){
+        /*
+        AzkarDataBase.execSQL("INSERT INTO tbl_morning_azkar " +
+                "(col_zekir, col_counts, col_category) " +
+                "values('"+ zekir +"', '"+counts+"', '"+category+"');");*/
+        AzkarDataBase = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("col_zekir", zekir);
+        cv.put("col_counts", counts);
+        cv.put("col_category", (byte) category);
+        AzkarDataBase.insert("tbl_morning_azkar", null, cv);
     }
 
-    public Cursor fetchAll(){
-        AzkarDataBase = getReadableDatabase();
-        String[] rowDetails = {"col_id", "col_zekir", "col_counts", "col_category"};
-        Cursor cursor = AzkarDataBase.query("tbl_morning_azkar", rowDetails, null, null, null, null, null);
-        if(cursor != null) cursor.moveToFirst();
+    public Cursor getData(){
+        AzkarDataBase = this.getWritableDatabase();
+        Cursor cursor = AzkarDataBase.rawQuery("SELECT * FROM tbl_morning_azkar", null);
         return cursor;
     }
 }
