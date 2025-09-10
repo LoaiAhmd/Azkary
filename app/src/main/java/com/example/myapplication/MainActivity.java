@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button evening_azkar_btn = findViewById(R.id.id_evening_btn);
         evening_azkar_btn.setOnClickListener(v -> {
-            Intent evening_intent = new Intent(MainActivity.this, MorningAzkar.class);
+            Intent evening_intent = new Intent(MainActivity.this, EveningAzkar.class);
             startActivity(evening_intent);
         });
 

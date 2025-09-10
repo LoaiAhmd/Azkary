@@ -5,42 +5,48 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.myapplication.databinding.ActivityMorningAzkarBinding;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
+import android.view.View;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+import com.example.myapplication.databinding.ActivityEveningAzkarBinding;
 
 import java.util.ArrayList;
 
-public class MorningAzkar extends AppCompatActivity {
+public class EveningAzkar extends AppCompatActivity {
 
-    DB_Helper_MorningAzkar myDB;
-    MorningAzkarAdapter adapter;
+    DB_Helper_EveningAzkar myDB;
+    EveningAzkarAdapter adapter;
     RecyclerView rv;
     ArrayList<String> lst_zekir;
     ArrayList<Integer> lst_counts;
-    private ActivityMorningAzkarBinding binding;
+    private ActivityEveningAzkarBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding = ActivityMorningAzkarBinding.inflate(getLayoutInflater());
+        binding = ActivityEveningAzkarBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        Toolbar toolbar = findViewById(R.id.id_mor_toolbar);
+        Toolbar toolbar = findViewById(R.id.id_eve_toolbar);
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        myDB = new DB_Helper_MorningAzkar(this);
+        myDB = new DB_Helper_EveningAzkar(this);
         lst_zekir = new ArrayList<>();
         lst_counts = new ArrayList<>();
-        adapter = new MorningAzkarAdapter(this, lst_zekir, lst_counts);
-        rv = findViewById(R.id.id_mor_recyclerView);
+        adapter = new EveningAzkarAdapter(this, lst_zekir,lst_counts);
+        rv = findViewById(R.id.id_eve_recyclerview);
         rv.setAdapter(adapter);
         rv.setLayoutManager(new LinearLayoutManager(this));
         displayData();
@@ -52,7 +58,7 @@ public class MorningAzkar extends AppCompatActivity {
 
         Cursor cursor = myDB.getData();
         if(cursor.getCount() == 0){
-            Toast.makeText(MorningAzkar.this, "No Data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
             return;
         }
         else{
@@ -60,9 +66,9 @@ public class MorningAzkar extends AppCompatActivity {
                 lst_zekir.add(cursor.getString(cursor.getColumnIndex("col_zekir")));
                 lst_counts.add(cursor.getInt(cursor.getColumnIndex("col_counts")));
             }
-            //adapter.notifyDataSetChanged();  // ✅ refresh RecyclerView
         }
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

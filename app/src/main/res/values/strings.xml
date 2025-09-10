@@ -4,7 +4,7 @@
     <string name="string_morning_azkar">Morning Azkar</string>
     <string name="string_evening_azkar">Evening Azkar</string>
     <string name="string_tasbeeh">Tasbeeh</string>
-    <string name="string_count"> 0 </string>
+    <string name="string_count">0</string>
 
     <!-- Missing strings -->
     <string name="next">Next</string>

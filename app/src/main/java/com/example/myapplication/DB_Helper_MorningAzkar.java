@@ -5,16 +5,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Pair;
 import androidx.annotation.Nullable;
 
-import java.util.Vector;
-
 public class DB_Helper_MorningAzkar extends SQLiteOpenHelper{
-    private static String DataBaseName = "AzkarDataBase.db";
+    public static String DataBaseName = "MorningAzkarDataBase.db";
     SQLiteDatabase AzkarDataBase;
     AzkarData ad = new AzkarData();
-    public DB_Helper_MorningAzkar(@Nullable Context context) { super(context, DataBaseName, null, 1);}
+    public DB_Helper_MorningAzkar(@Nullable Context context) { super(context, DataBaseName, null, 2);}
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -24,11 +21,11 @@ public class DB_Helper_MorningAzkar extends SQLiteOpenHelper{
                 "col_counts INTEGER," +
                 "col_category CHAR(1))");
 
-        for (int i = 0; i < ad.size(); i++) {
+        for (int i = 0; i < ad.size_M(); i++) {
             ContentValues cv = new ContentValues();
-            cv.put("col_zekir", ad.getZekir(i).get_zekir());
-            cv.put("col_counts", ad.getZekir(i).get_counts());
-            cv.put("col_category", (byte) String.valueOf(ad.getZekir(i).get_category()).charAt(0));
+            cv.put("col_zekir", ad.getZekir_M(i).get_zekir());
+            cv.put("col_counts", ad.getZekir_M(i).get_counts());
+            cv.put("col_category", (byte) String.valueOf(ad.getZekir_M(i).get_category()).charAt(0));
             db.insert("tbl_morning_azkar", null, cv);
         }
     }
