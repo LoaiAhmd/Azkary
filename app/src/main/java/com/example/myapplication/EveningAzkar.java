@@ -66,9 +66,9 @@ public class EveningAzkar extends AppCompatActivity {
                 lst_zekir.add(cursor.getString(cursor.getColumnIndex("col_zekir")));
                 lst_counts.add(cursor.getInt(cursor.getColumnIndex("col_counts")));
             }
+            cursor.close();
         }
     }
-
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

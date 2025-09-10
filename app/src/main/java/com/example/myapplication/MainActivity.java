@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button tasbeeh_btn = findViewById(R.id.id_tasbeeh_btn);
         tasbeeh_btn.setOnClickListener(v -> {
-            Intent tasbeeh_intent = new Intent(MainActivity.this, MorningAzkar.class);
+            Intent tasbeeh_intent = new Intent(MainActivity.this, Tasbeeh.class);
             startActivity(tasbeeh_intent);
         });
 
