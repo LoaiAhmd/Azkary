@@ -11,7 +11,8 @@ public class DB_Helper_MorningAzkar extends SQLiteOpenHelper{
     public static String DataBaseName = "MorningAzkarDataBase.db";
     SQLiteDatabase AzkarDataBase;
     AzkarData ad = new AzkarData();
-    public DB_Helper_MorningAzkar(@Nullable Context context) { super(context, DataBaseName, null, 2);}
+    public DB_Helper_MorningAzkar(@Nullable Context context)
+    { super(context, DataBaseName, null, 3);}
 
     @Override
     public void onCreate(SQLiteDatabase db) {

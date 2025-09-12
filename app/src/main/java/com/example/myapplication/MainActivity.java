@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import android.widget.Button;
+import android.widget.ImageButton;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,6 +34,13 @@ public class MainActivity extends AppCompatActivity {
             Intent tasbeeh_intent = new Intent(MainActivity.this, Tasbeeh.class);
             startActivity(tasbeeh_intent);
         });
+
+        ImageButton settings = findViewById(R.id.id_settings);
+        settings.setOnClickListener(v -> {
+            Intent settings_intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(settings_intent);
+        });
+
 
     }
 }

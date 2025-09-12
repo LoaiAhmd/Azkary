@@ -14,7 +14,7 @@ public class DB_Helper_EveningAzkar extends SQLiteOpenHelper {
     AzkarData ad = new AzkarData();
 
     public DB_Helper_EveningAzkar(@Nullable Context context) {
-        super(context, DataBaseName, null, 2);
+        super(context, DataBaseName, null, 3);
     }
 
     @Override

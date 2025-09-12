@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="string_app_name"> أذكار </string>
+    <string name="string_morning_azkar"> أذكار الصباح </string>
     <string name="string_evening_azkar"> أذكار المساء </string>
     <string name="string_tasbeeh"> تسبيح </string>
-    <string name="string_app_name">أذكار المسلم </string>
-    <string name="string_morning_azkar"> أذكار الصباح </string>
+    <string name="string_settings"> الإعدادات </string>
+    <string name="string_add_widget"> إضافة عنصر واجهة مصغر إلى الشاشة الرئيسية </string>
+    <string name="string_auto_hide_notfications"> الإخفاء التلقائي </string>
+    <string name="string_auto_hide_notfications_hint"> تختفي الإشعارات تلقائيًا بعد 10 ثواني </string>
+    <string name="string_dark_mode"> الوضع المظلم </string>
+    <string name="string_clock_morning_azkar"> إضافة تنبيه لأذكار الصباح </string>
+    <string name="string_clock_evening_azkar"> إضافة تنبيه لأذكار المساء </string>
 
     <!-- Missing strings translated -->
     <string name="next">التالي</string>
