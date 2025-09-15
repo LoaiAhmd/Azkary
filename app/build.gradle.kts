@@ -41,6 +41,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:2.6.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.preference:preference:1.2.0")
+    implementation("io.github.pilgr:paperdb:2.7.2")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.7.0")

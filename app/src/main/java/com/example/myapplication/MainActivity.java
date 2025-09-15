@@ -5,15 +5,14 @@ import android.os.Bundle;
 
 import android.widget.Button;
 import android.widget.ImageButton;
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
         Button morning_azkar_btn = findViewById(R.id.id_morning_btn);
@@ -21,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
             Intent morning_intent = new Intent(MainActivity.this, MorningAzkar.class);
             startActivity(morning_intent);
         });
-
 
         Button evening_azkar_btn = findViewById(R.id.id_evening_btn);
         evening_azkar_btn.setOnClickListener(v -> {
@@ -41,6 +39,23 @@ public class MainActivity extends AppCompatActivity {
             startActivity(settings_intent);
         });
 
+        BottomNavigationView nav_homePage = findViewById(R.id.id_nav_home_page);
+        nav_homePage.setOnItemSelectedListener(item -> {
+            if(item.getItemId() == R.id.id_nav_menu_home_page) {
+                Intent homePage_intent = new Intent(MainActivity.this, MainActivity.class);
+                startActivity(homePage_intent);
+            }
+            return false;
+        });
+
+        BottomNavigationView nav_widgetAzkarPage = findViewById(R.id.id_nav_widget_page);
+        nav_widgetAzkarPage.setOnItemSelectedListener(item -> {
+            if(item.getItemId() == R.id.id_nav_menu_widget_page) {
+                Intent widgetAzkarPage_intent = new Intent(MainActivity.this, WidgetAzkarPage.class);
+                startActivity(widgetAzkarPage_intent);
+            }
+            return false;
+        });
 
     }
 }

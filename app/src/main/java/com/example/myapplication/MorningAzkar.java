@@ -60,7 +60,6 @@ public class MorningAzkar extends AppCompatActivity {
                 lst_zekir.add(cursor.getString(cursor.getColumnIndex("col_zekir")));
                 lst_counts.add(cursor.getInt(cursor.getColumnIndex("col_counts")));
             }
-            //adapter.notifyDataSetChanged();  // ✅ refresh RecyclerView
         }
     }
 

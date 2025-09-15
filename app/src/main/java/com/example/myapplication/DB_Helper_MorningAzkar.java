@@ -37,19 +37,6 @@ public class DB_Helper_MorningAzkar extends SQLiteOpenHelper{
         onCreate(db);
     }
 
-    public void insertIntoDB(String zekir, int counts, char category){
-        /*
-        AzkarDataBase.execSQL("INSERT INTO tbl_morning_azkar " +
-                "(col_zekir, col_counts, col_category) " +
-                "values('"+ zekir +"', '"+counts+"', '"+category+"');");*/
-        AzkarDataBase = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-        cv.put("col_zekir", zekir);
-        cv.put("col_counts", counts);
-        cv.put("col_category", (byte) category);
-        AzkarDataBase.insert("tbl_morning_azkar", null, cv);
-    }
-
     public Cursor getData(){
         AzkarDataBase = this.getWritableDatabase();
         Cursor cursor = AzkarDataBase.rawQuery("SELECT * FROM tbl_morning_azkar", null);

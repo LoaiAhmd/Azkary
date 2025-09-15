@@ -11,6 +11,9 @@
     <string name="string_dark_mode"> الوضع المظلم </string>
     <string name="string_clock_morning_azkar"> إضافة تنبيه لأذكار الصباح </string>
     <string name="string_clock_evening_azkar"> إضافة تنبيه لأذكار المساء </string>
+    <string name="string_widget_azkar_on_home_screen"> الأذكار على الشاشة الرئيسية </string>
+    <string name="string_nav_home_page"> الصفحة الرئيسية </string>
+    <string name="string_nav_widget_page"> أذكار الشاشة الرئيسية </string>
 
     <!-- Missing strings translated -->
     <string name="next">التالي</string>

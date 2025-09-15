@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MorningAzkarAdapter extends RecyclerView.Adapter<MorningAzkarAdapter.ViewHolder>{
 
@@ -66,7 +64,6 @@ public class MorningAzkarAdapter extends RecyclerView.Adapter<MorningAzkarAdapte
             Toast.makeText(context, "تم نسخ الذكر", Toast.LENGTH_SHORT).show();
         });
 
-
     }
 
     @Override
@@ -84,7 +81,7 @@ public class MorningAzkarAdapter extends RecyclerView.Adapter<MorningAzkarAdapte
             txtv_zekir = itemView.findViewById(R.id.id_zekr_box);
             btn_counts = itemView.findViewById(R.id.id_count_btn);
             img_copy_btn = itemView.findViewById(R.id.id_copy_btn);
-            card = itemView.findViewById(R.id.id_cardview);
+            card = itemView.findViewById(R.id.id_cardview_item_zekr);
         }
     }
 

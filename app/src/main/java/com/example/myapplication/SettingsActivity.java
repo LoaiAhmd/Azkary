@@ -5,6 +5,7 @@ import android.widget.Switch;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceFragmentCompat;
+import io.paperdb.Paper;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -23,7 +24,11 @@ public class SettingsActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        Paper.init(this);
         Switch add_widget_swch = findViewById(R.id.id_switch_add_widget);
+        if(add_widget_swch.isChecked()){
+            Paper.book().write("Zekir", new Zekir_("صل على رسول الله").get_zekir());
+        }
 
     }
 

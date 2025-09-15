@@ -34,6 +34,11 @@ public class Tasbeeh extends AppCompatActivity {
         }
 
         sp = getSharedPreferences("tasbeeh", MODE_PRIVATE);
+
+        if (!sp.contains("initialized")) {
+            sp.edit().putInt("count", 0).putBoolean("initialized", true).apply();
+        }
+
         Button btn_zero = findViewById(R.id.id_zero_btn);
         Button btn_counter = findViewById(R.id.id_counter_btn);
         EditText edt_counter = findViewById(R.id.id_edt_counter);

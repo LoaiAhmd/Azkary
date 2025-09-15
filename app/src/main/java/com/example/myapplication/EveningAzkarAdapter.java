@@ -3,8 +3,6 @@ package com.example.myapplication;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
-import android.database.Cursor;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,7 +81,7 @@ public class EveningAzkarAdapter extends RecyclerView.Adapter<EveningAzkarAdapte
             txtv_zekir = itemView.findViewById(R.id.id_zekr_box);
             btn_counts = itemView.findViewById(R.id.id_count_btn);
             img_copy_btn = itemView.findViewById(R.id.id_copy_btn);
-            card = itemView.findViewById(R.id.id_cardview);
+            card = itemView.findViewById(R.id.id_cardview_item_zekr);
         }
     }
 
