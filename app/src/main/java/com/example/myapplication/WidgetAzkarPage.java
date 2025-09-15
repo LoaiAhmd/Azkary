@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class WidgetAzkarPage extends AppCompatActivity {
 
-    DH_Helper_WidgetAzkar myDB;
+    DatabaseHelper myDB;
     WidgetAzkarAdapter adapter;
     RecyclerView rv;
     ArrayList<String> lst_widget_azkar;
@@ -41,7 +41,7 @@ public class WidgetAzkarPage extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        myDB = new DH_Helper_WidgetAzkar(this);
+        myDB = new DatabaseHelper(this);
         lst_widget_azkar = new ArrayList<>();
         adapter = new WidgetAzkarAdapter(this, lst_widget_azkar);
         rv = findViewById(R.id.id_wid_recyclerView);
@@ -55,7 +55,7 @@ public class WidgetAzkarPage extends AppCompatActivity {
     private void displayData() {
         lst_widget_azkar.clear();
 
-        Cursor cursor = myDB.getData();
+        Cursor cursor = myDB.getWidgetAzkar();
         if(cursor.getCount() == 0){
             Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
             return;

@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class EveningAzkar extends AppCompatActivity {
 
-    DB_Helper_EveningAzkar myDB;
+    DatabaseHelper myDB;
     EveningAzkarAdapter adapter;
     RecyclerView rv;
     ArrayList<String> lst_zekir;
@@ -42,7 +42,7 @@ public class EveningAzkar extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        myDB = new DB_Helper_EveningAzkar(this);
+        myDB = new DatabaseHelper(this);
         lst_zekir = new ArrayList<>();
         lst_counts = new ArrayList<>();
         adapter = new EveningAzkarAdapter(this, lst_zekir,lst_counts);
@@ -56,7 +56,7 @@ public class EveningAzkar extends AppCompatActivity {
         lst_zekir.clear();
         lst_counts.clear();
 
-        Cursor cursor = myDB.getData();
+        Cursor cursor = myDB.getEveningAzkar();
         if(cursor.getCount() == 0){
             Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
             return;
