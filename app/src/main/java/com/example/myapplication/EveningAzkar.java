@@ -63,8 +63,8 @@ public class EveningAzkar extends AppCompatActivity {
         }
         else{
             while(cursor.moveToNext()){
-                lst_zekir.add(cursor.getString(cursor.getColumnIndex("col_zekir")));
-                lst_counts.add(cursor.getInt(cursor.getColumnIndex("col_counts")));
+                lst_zekir.add(cursor.getString(cursor.getColumnIndexOrThrow("col_zekir")));
+                lst_counts.add(cursor.getInt(cursor.getColumnIndexOrThrow("col_counts")));
             }
             cursor.close();
         }

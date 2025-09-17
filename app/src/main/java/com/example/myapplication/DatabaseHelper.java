@@ -11,6 +11,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "AzkarDataBase.db";
     public static final int DATABASE_VERSION = 3;
+    public SQLiteDatabase DB = null;
 
     // Table names and columns
     public static final String TBL_MORNING_AZKAR = "tbl_morning_azkar";
@@ -29,7 +30,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Create Morning Azkar Table
+        //---------------- MORNING AZKAR TABLE ----------------//
+        Create_Morning_Azkar_Table(db);
+
+        //---------------- EVENING AZKAR TABLE ----------------//
+        Create_Evening_Azkar_Table(db);
+
+        //---------------- WIDGET AZKAR TABLE ----------------//
+        Create_Widget_Azkar_Table(db);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TBL_MORNING_AZKAR);
+        db.execSQL("DROP TABLE IF EXISTS " + TBL_EVENING_AZKAR);
+        db.execSQL("DROP TABLE IF EXISTS " + TBL_WIDGET_AZKAR);
+        onCreate(db);
+    }
+
+    public void Create_Morning_Azkar_Table(SQLiteDatabase db){
         db.execSQL("CREATE TABLE " + TBL_MORNING_AZKAR + " (" +
                 COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 COL_ZEKIR + " TEXT NOT NULL," +
@@ -44,15 +63,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cv.put(COL_CATEGORY, (byte) String.valueOf(ad.getZekir_M(i).get_category()).charAt(0));
             db.insert(TBL_MORNING_AZKAR, null, cv);
         }
+    }
+    public Cursor getMorningAzkar() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TBL_MORNING_AZKAR, null);
+    }
 
-        // Create Evening Azkar Table
+    public void Create_Evening_Azkar_Table(SQLiteDatabase db){
         db.execSQL("CREATE TABLE " + TBL_EVENING_AZKAR + " (" +
                 COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 COL_ZEKIR + " TEXT NOT NULL," +
                 COL_COUNTS + " INTEGER," +
                 COL_CATEGORY + " CHAR(1))");
 
-        // Insert initial data for Evening Azkar
         for (int i = 0; i < ad.size_E(); i++) {
             ContentValues cv = new ContentValues();
             cv.put(COL_ZEKIR, ad.getZekir_E(i).get_zekir());
@@ -60,7 +83,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cv.put(COL_CATEGORY, (byte) String.valueOf(ad.getZekir_E(i).get_category()).charAt(0));
             db.insert(TBL_EVENING_AZKAR, null, cv);
         }
+    }
+    public Cursor getEveningAzkar() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TBL_EVENING_AZKAR, null);
+    }
 
+    public void Create_Widget_Azkar_Table(SQLiteDatabase db){
         // Create Widget Azkar Table
         db.execSQL("CREATE TABLE " + TBL_WIDGET_AZKAR + " (" +
                 COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -73,27 +102,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             db.insert(TBL_WIDGET_AZKAR, null, cv);
         }
     }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " + TBL_MORNING_AZKAR);
-        db.execSQL("DROP TABLE IF EXISTS " + TBL_EVENING_AZKAR);
-        db.execSQL("DROP TABLE IF EXISTS " + TBL_WIDGET_AZKAR);
-        onCreate(db);
-    }
-
-    public Cursor getMorningAzkar() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM " + TBL_MORNING_AZKAR, null);
-    }
-
-    public Cursor getEveningAzkar() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        return db.rawQuery("SELECT * FROM " + TBL_EVENING_AZKAR, null);
-    }
-
-    public Cursor getWidgetAzkar() {
+        public Cursor getWidgetAzkar() {
         SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery("SELECT * FROM " + TBL_WIDGET_AZKAR, null);
+    }
+
+    public void insertNewWidgetZekr(String newZekr){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ad.add_new_widget_zekr(newZekr);
+        ContentValues cv = new ContentValues();
+        cv.put(COL_ZEKIR, newZekr);
+        db.insert(TBL_WIDGET_AZKAR, null, cv);
     }
 }

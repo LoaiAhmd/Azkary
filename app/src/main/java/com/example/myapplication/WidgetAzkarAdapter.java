@@ -1,16 +1,20 @@
 package com.example.myapplication;
 
+import android.app.AlertDialog;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import io.paperdb.Paper;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,7 +23,6 @@ import java.util.ArrayList;
 public class WidgetAzkarAdapter extends RecyclerView.Adapter<WidgetAzkarAdapter.ViewHolder>{
 
     public SharedPreferences sp_status;
-    public int NumofAzkar = 0;
     Context context;
     ArrayList<String> lst_widet_azkar;
 
@@ -38,26 +41,34 @@ public class WidgetAzkarAdapter extends RecyclerView.Adapter<WidgetAzkarAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String zekir = lst_widet_azkar.get(position);
-        NumofAzkar = Math.max(position, NumofAzkar);
 
-        sp_status = context.getSharedPreferences("CheckedAzkar", context.MODE_PRIVATE);
-        boolean checked = sp_status.getBoolean(zekir, true);
+        SharedPreferences sp_status = context.getSharedPreferences("CheckedAzkar", context.MODE_PRIVATE);
+        boolean checked = sp_status.getBoolean(zekir, false);
+
+        holder.chkbox_zekir.setOnCheckedChangeListener(null);
 
         holder.chkbox_zekir.setText(zekir);
         holder.chkbox_zekir.setChecked(checked);
 
-        Paper.book().write("full_azkar_list", lst_widet_azkar);
-
         holder.chkbox_zekir.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            holder.chkbox_zekir.setChecked(isChecked);
             SharedPreferences.Editor status_editor = sp_status.edit();
             status_editor.putBoolean(zekir, isChecked);
-            status_editor.commit();
+            status_editor.apply();
 
             updateWidget();
         });
+
+        Paper.book().write("full_azkar_list", lst_widet_azkar);
     }
 
+    public void updataAdapter(String newzekr){
+        lst_widet_azkar.add(newzekr);
+        SharedPreferences.Editor editor = sp_status.edit();
+        editor.putBoolean(newzekr, true);
+        editor.commit();
+
+        updateWidget();
+    }
     private void updateWidget() {
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         ComponentName thisWidget = new ComponentName(context, Widget.class);

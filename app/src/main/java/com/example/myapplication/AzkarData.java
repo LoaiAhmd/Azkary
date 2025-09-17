@@ -114,6 +114,9 @@ public class AzkarData {
     public Zekir_ getZekir_W(int index){
         return Vz_Widget.get(index);
     }
+    public void add_new_widget_zekr(String newzekr){
+        Vz_Widget.add(new Zekir_(newzekr));
+    }
     public int size_W(){
         return Vz_Widget.size();
     }

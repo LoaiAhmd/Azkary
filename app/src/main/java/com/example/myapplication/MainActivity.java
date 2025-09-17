@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView nav_homePage = findViewById(R.id.id_nav_home_page);
         nav_homePage.setOnItemSelectedListener(item -> {
             if(item.getItemId() == R.id.id_nav_menu_home_page) {
-                Intent homePage_intent = new Intent(MainActivity.this, MainActivity.class);
+                Intent homePage_intent = new Intent(MainActivity.this, Tasbeeh.class);
                 startActivity(homePage_intent);
             }
             return false;

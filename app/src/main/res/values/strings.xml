@@ -12,6 +12,10 @@
     <string name="string_clock_morning_azkar">Set Alarm for Morning Azkar</string>
     <string name="string_clock_evening_azkar">Set Alarm for Evening Azkar</string>
     <string name="string_widget_azkar_on_home_screen"> Azkar on Home Screen Widget </string>
+    <string name="string_title_add_new_zekir"> Add New Zekr </string>
+    <string name="string_btn_add_new_zekir"> Add </string>
+    <string name="string_toast_added"> Added Successfully </string>
+    <string name="string_btn_cancel"> Cancel </string>
     <string name="string_nav_home_page"> Home Page </string>
     <string name="string_nav_widget_page"> Widget Page Azkar </string>
     <string name="string_count">0</string>
