@@ -2,6 +2,83 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> --> <!-- Toolbar colors -->
+    </style>
+
+    <!-- Screen -->
+    <style name="Screen">
+        <item name="background"> @color/gray </item>
+    </style>
+
+    <!-- Text -->
+    <style name="Text">
+        <item name="android:textColor"> @color/white </item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- Button -->
+    <style name="Button">
+        <item name="android:backgroundTint"> @color/gray_light </item>
+        <item name="android:textColor"> @color/white </item>
+    </style>
+
+    <!-- Container (Card/LinearLayout) -->
+    <style name="MyContainer">
+        <item name="android:background">@color/gray</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <!-- CheckBox -->
+    <style name="MyCheckBox">
+        <item name="android:buttonTint">@color/white</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <!-- ImageButton -->
+    <style name="MyImageButtonStyle">
+        <item name="android:tint">@color/white</item>
+    </style>
+
+    <!-- ToolBar -->
+    <style name="ToolBarStyle">
+        <item name="android:background"> @color/purple </item>
+        <item name="titleTextColor"> @color/white </item>
+        <item name="android:titleTextStyle">@style/Text</item>
+    </style>
+
+    <!-- CardView -->
+    <style name="CardViewStyle">
+        <item name="cardBackgroundColor">@color/purple</item>
+        <item name="android:opacity"> transparent </item>
+        <item name="cardCornerRadius"> 20dp </item>
+    </style>
+
+    <!-- EditText -->
+    <style name="EditTextStyle">
+        <item name="android:background"> @color/gray_light </item>
+        <item name="android:textColor"> @color/black </item>
+    </style>
+
+    <!-- MainActvBtn -->
+    <style name="MainActvBtnStyle">
+        <item name="android:backgroundTint"> @color/purple </item>
+        <item name="android:textColor"> @color/white </item>
+    </style>
+
+    <!-- NavBtn -->
+    <style name="Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="bottomNavigationStyle">@style/CustomBottomNavStyle</item>
+    </style>
+
+    <style name="CustomBottomNavStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemTextColor">@color/white</item>
+        <item name="itemBackground">@color/purple</item>
+        <item name="shapeAppearanceOverlay">@style/RoundedBottomNavStyle</item>
+    </style>
+
+    <style name="RoundedBottomNavStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item> <!-- radius here -->
     </style>
 </resources>

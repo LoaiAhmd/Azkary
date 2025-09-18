@@ -8,14 +8,13 @@
         android:layout_height="match_parent"
         tools:context=".Tasbeeh">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
+            style="@style/ToolBarStyle"
             android:id="@+id/id_tsb_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/design_default_color_primary_variant"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:title="@string/string_nav_tasbeeh_page"
-            app:titleTextColor="@color/white"
             tools:layout_editor_absoluteY="4dp"
             tools:layout_editor_absoluteX="0dp"
             app:layout_constraintTop_toTopOf="parent"
@@ -37,14 +36,14 @@
                 android:layout_height="75dp"
                 android:layout_marginTop="144dp"
                 android:layout_marginStart="32dp"
-                android:backgroundTint="@color/black"
+                style="@style/Button"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent" tools:ignore="SpeakableTextPresentCheck"/>
         <Button
                 android:id="@+id/id_counter_btn"
                 android:layout_width="300dp"
                 android:layout_height="300dp"
-                android:backgroundTint="@color/black"
+                style="@style/Button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -52,15 +51,15 @@
                 tools:ignore="SpeakableTextPresentCheck"/>
 
         <EditText
+                style="@style/EditTextStyle"
                 android:id="@+id/id_edt_counter"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:background="@color/cardview_shadow_start_color"
                 android:textAlignment="center"
                 android:textSize="50sp"
                 android:editable="false"
-                tools:layout_editor_absoluteX="16dp"
                 app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="16dp"
                 tools:ignore="SpeakableTextPresentCheck"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

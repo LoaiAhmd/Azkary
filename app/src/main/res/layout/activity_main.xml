@@ -6,22 +6,22 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/bggreen"
         tools:context=".MainActivity">
 
     <!--===========Tool Bar===================-->
     <androidx.appcompat.widget.Toolbar
+            style="@style/ToolBarStyle"
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:title="@string/string_app_name"
-            app:titleTextColor="@color/black"
             tools:ignore="MissingConstraints,UnknownId"
             tools:layout_editor_absoluteX="0dp"
             app:layout_constraintTop_toBottomOf="@+id/space">
 
         <ImageButton
+                style="@style/MyImageButtonStyle"
                 android:id="@+id/id_settings"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -44,66 +44,63 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:orientation="vertical"
-
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintVertical_bias="1.0">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
+                style="@style/MainActvBtnStyle"
                 android:id="@+id/id_morning_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:layout_marginHorizontal="20dp"
                 android:text="@string/string_morning_azkar"
-                android:backgroundTint="@color/cardview_shadow_start_color"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="34sp"
+                android:textSize="32sp"
 
+                app:cornerRadius="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintVertical_bias="0.228"/>
-        <Button
+
+        <com.google.android.material.button.MaterialButton
+                style="@style/MainActvBtnStyle"
                 android:id="@+id/id_evening_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:layout_marginHorizontal="20dp"
                 android:text="@string/string_evening_azkar"
-                android:backgroundTint="@color/cardview_shadow_start_color"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="34sp"
+                android:textSize="32sp"
 
+                app:cornerRadius="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.426"/>
-        <Button
+                app:layout_constraintVertical_bias="0.357" app:layout_constraintHorizontal_bias="0.6"/>
+
+        <com.google.android.material.button.MaterialButton
+                style="@style/MainActvBtnStyle"
                 android:id="@+id/id_sleeping_azkar_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
+                android:layout_marginHorizontal="20dp"
                 android:text="@string/string_sleeping_azkar"
-                android:backgroundTint="@color/cardview_shadow_start_color"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="34sp"
+                android:textSize="32sp"
 
+                app:cornerRadius="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintVertical_bias="0.629"/>
+                app:layout_constraintHorizontal_bias="0.4" app:layout_constraintVertical_bias="0.485"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+                style="@style/CustomBottomNavStyle"
                 android:id="@+id/id_nav_tasbeeh_page"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
                 android:layout_margin="20dp"
                 app:menu="@menu/nav_tasbeeh_page_menu"
                 app:layout_constraintWidth_percent="0.5"
@@ -111,12 +108,11 @@
                 app:layout_constraintBottom_toBottomOf="parent"
         />
         <com.google.android.material.bottomnavigation.BottomNavigationView
+                style="@style/CustomBottomNavStyle"
                 android:id="@+id/id_nav_widget_page"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:layout_marginStart="16dp"
-                android:layout_marginBottom="20dp"
+                android:layout_margin="20dp"
                 app:menu="@menu/nav_widget_screen_menu"
                 app:layout_constraintWidth_percent="0.5"
                 app:layout_constraintBottom_toBottomOf="parent"

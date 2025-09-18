@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.shape.MaterialShapeDrawable;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(settings_intent);
         });
 
-        BottomNavigationView nav_homePage = findViewById(R.id.id_nav_tasbeeh_page);
-        nav_homePage.setOnItemSelectedListener(item -> {
+        BottomNavigationView nav_TasbeehPage = findViewById(R.id.id_nav_tasbeeh_page);
+        nav_TasbeehPage.setOnItemSelectedListener(item -> {
             if(item.getItemId() == R.id.id_nav_menu_home_page) {
                 Intent homePage_intent = new Intent(MainActivity.this, Tasbeeh.class);
                 startActivity(homePage_intent);

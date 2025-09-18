@@ -5,9 +5,10 @@
     <color name="blue">#FF0000FF</color>
     <color name="green">#00FF00</color>
     <color name="red">#FF0000</color>
-    <color name="cyan">#ff12a4af</color>
-    <color name="cyan_light">#ff80cbc4</color>
-    <color name="purple">#8c6d8c</color>
+    <color name="cyan">#ff00796b</color>
+    <color name="cyan_light">#ff12b5cb</color>
+    <color name="purple">#3700B3</color>
+    <color name="purple_500">#6200EE</color>
     <color name="orange">#FF8800</color>
     <color name="gray">#48464C</color>
     <color name="gray_light">#cac4d0</color>

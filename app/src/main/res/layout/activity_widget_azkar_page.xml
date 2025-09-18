@@ -7,14 +7,15 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        style="@style/Screen"
         tools:context=".WidgetAzkarPage"
 >
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
+            style="@style/ToolBarStyle"
             android:id="@+id/id_toolbar_widget_page_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/gray_light"
             app:title="@string/string_widget_azkar_on_home_screen"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,13 +33,17 @@
             android:layout_marginTop="10dp"
             app:layout_constraintTop_toBottomOf="@+id/id_toolbar_widget_page_layout"
             app:layout_constraintVertical_bias="0.0" app:layout_constraintHorizontal_bias="0.0"/>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/id_fab_widget_azkar_page"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_input_add"
+            android:layout_marginStart="48dp"
+            android:layout_marginBottom="64dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             tools:ignore="SpeakableTextPresentCheck"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="48dp" android:layout_marginBottom="64dp"/>
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

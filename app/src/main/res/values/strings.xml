@@ -4,6 +4,7 @@
     <string name="string_morning_azkar">أذكار الصباح</string>
     <string name="string_evening_azkar">أذكار المساء</string>
     <string name="string_sleeping_azkar">أذكار النوم</string>
+    <string name="string_waking_azkar"> أذكار الإستيقاظ </string>
     <string name="string_settings">Settings</string>
     <string name="string_add_widget">Add Widget to screen home</string>
     <string name="string_auto_hide_notfications">Auto Hide Notfications</string>
