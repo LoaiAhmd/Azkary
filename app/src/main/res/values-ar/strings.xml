@@ -3,7 +3,7 @@
     <string name="string_app_name"> أذكار </string>
     <string name="string_morning_azkar"> أذكار الصباح </string>
     <string name="string_evening_azkar"> أذكار المساء </string>
-    <string name="string_tasbeeh"> تسبيح </string>
+    <string name="string_sleeping_azkar"> أذكار النوم </string>
     <string name="string_settings"> الإعدادات </string>
     <string name="string_add_widget"> إضافة عنصر واجهة مصغر إلى الشاشة الرئيسية </string>
     <string name="string_auto_hide_notfications"> الإخفاء التلقائي </string>
@@ -16,7 +16,9 @@
     <string name="string_btn_add_new_zekir"> إضافة </string>
     <string name="string_toast_added"> تم إضافة الذكر </string>
     <string name="string_btn_cancel"> إلغاء </string>
-    <string name="string_nav_home_page"> الصفحة الرئيسية </string>
+    <string name="string_btn_update"> تعديل </string>
+    <string name="string_btn_delete"> حذف </string>
+    <string name="string_nav_tasbeeh_page"> تسبيح </string>
     <string name="string_nav_widget_page"> أذكار الشاشة الرئيسية </string>
 
     <!-- Missing strings translated -->

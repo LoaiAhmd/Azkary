@@ -82,11 +82,11 @@
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.426"/>
         <Button
-                android:id="@+id/id_tasbeeh_btn"
+                android:id="@+id/id_sleeping_azkar_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                android:text="@string/string_tasbeeh"
+                android:text="@string/string_sleeping_azkar"
                 android:backgroundTint="@color/cardview_shadow_start_color"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -100,32 +100,28 @@
                 app:layout_constraintVertical_bias="0.629"/>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/id_nav_home_page"
+                android:id="@+id/id_nav_tasbeeh_page"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
                 android:layout_margin="20dp"
-                app:menu="@menu/nav_home_page_menu"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:menu="@menu/nav_tasbeeh_page_menu"
                 app:layout_constraintWidth_percent="0.5"
-                android:layout_marginBottom="28dp"/>
-
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+        />
         <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/id_nav_widget_page"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@android:color/transparent"
-                android:layout_margin="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="20dp"
                 app:menu="@menu/nav_widget_screen_menu"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintWidth_percent="0.5"
-                android:layout_marginBottom="28dp"/>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/id_nav_tasbeeh_page"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

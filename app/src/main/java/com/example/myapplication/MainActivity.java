@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(evening_intent);
         });
 
-        Button tasbeeh_btn = findViewById(R.id.id_tasbeeh_btn);
+        Button tasbeeh_btn = findViewById(R.id.id_sleeping_azkar_btn);
         tasbeeh_btn.setOnClickListener(v -> {
-            Intent tasbeeh_intent = new Intent(MainActivity.this, Tasbeeh.class);
+            Intent tasbeeh_intent = new Intent(MainActivity.this, SleepingAzkar.class);
             startActivity(tasbeeh_intent);
         });
 
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(settings_intent);
         });
 
-        BottomNavigationView nav_homePage = findViewById(R.id.id_nav_home_page);
+        BottomNavigationView nav_homePage = findViewById(R.id.id_nav_tasbeeh_page);
         nav_homePage.setOnItemSelectedListener(item -> {
             if(item.getItemId() == R.id.id_nav_menu_home_page) {
                 Intent homePage_intent = new Intent(MainActivity.this, Tasbeeh.class);

@@ -25,10 +25,12 @@
                     tools:ignore="MissingConstraints"
             />
             <ImageButton
+                    android:id="@+id/id_edit_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/popup_menu_btn"
+                    android:src="@drawable/edit"
                     android:background="@null"
+
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
             />
         </LinearLayout>

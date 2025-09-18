@@ -94,7 +94,6 @@ public class WidgetAzkarPage extends AppCompatActivity {
         Cursor cursor = myDB.getWidgetAzkar();
         if(cursor.getCount() == 0){
             Toast.makeText(this, "No Data", Toast.LENGTH_SHORT).show();
-            return;
         }
         else {
             while (cursor.moveToNext()){
