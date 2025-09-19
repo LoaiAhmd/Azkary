@@ -24,7 +24,7 @@
                 android:layout_height="50dp"
                 android:src="@drawable/cloudy_day"
                 android:layout_gravity="top|left"
-                android:layout_margin="10dp"
+                android:layout_marginHorizontal="10dp"
         />
 
     </com.google.android.material.appbar.MaterialToolbar>

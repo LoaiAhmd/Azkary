@@ -1,11 +1,14 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import android.widget.Button;
 import android.widget.ImageButton;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.shape.MaterialShapeDrawable;
 
@@ -14,6 +17,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SharedPreferences sp = getSharedPreferences("Mode", Context.MODE_PRIVATE);
+        boolean nightMode = sp.getBoolean("night", false);
+
+        if (nightMode) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        }
+
         setContentView(R.layout.activity_main);
 
         Button morning_azkar_btn = findViewById(R.id.id_morning_btn);
@@ -40,22 +53,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(settings_intent);
         });
 
-        BottomNavigationView nav_TasbeehPage = findViewById(R.id.id_nav_tasbeeh_page);
-        nav_TasbeehPage.setOnItemSelectedListener(item -> {
-            if(item.getItemId() == R.id.id_nav_menu_home_page) {
-                Intent homePage_intent = new Intent(MainActivity.this, Tasbeeh.class);
-                startActivity(homePage_intent);
-            }
-            return false;
+        Button nav_TasbeehPage = findViewById(R.id.id_nav_tasbeeh_page);
+        nav_TasbeehPage.setOnClickListener(item -> {
+            Intent homePage_intent = new Intent(MainActivity.this, Tasbeeh.class);
+            startActivity(homePage_intent);
         });
 
-        BottomNavigationView nav_widgetAzkarPage = findViewById(R.id.id_nav_widget_page);
-        nav_widgetAzkarPage.setOnItemSelectedListener(item -> {
-            if(item.getItemId() == R.id.id_nav_menu_widget_page) {
-                Intent widgetAzkarPage_intent = new Intent(MainActivity.this, WidgetAzkarPage.class);
-                startActivity(widgetAzkarPage_intent);
-            }
-            return false;
+        Button nav_widgetAzkarPage = findViewById(R.id.id_nav_widget_page);
+        nav_widgetAzkarPage.setOnClickListener(item -> {
+            Intent widgetAzkarPage_intent = new Intent(MainActivity.this, WidgetAzkarPage.class);
+            startActivity(widgetAzkarPage_intent);
         });
 
     }

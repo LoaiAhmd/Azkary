@@ -19,7 +19,7 @@
 
     <!-- Button -->
     <style name="Button">
-        <item name="android:backgroundTint"> @color/gray_light </item>
+        <item name="android:backgroundTint"> @color/purple </item>
         <item name="android:textColor"> @color/white </item>
     </style>
 
@@ -50,7 +50,6 @@
     <!-- CardView -->
     <style name="CardViewStyle">
         <item name="cardBackgroundColor">@color/purple</item>
-        <item name="android:opacity"> transparent </item>
         <item name="cardCornerRadius"> 20dp </item>
     </style>
 
@@ -66,19 +65,11 @@
         <item name="android:textColor"> @color/white </item>
     </style>
 
-    <!-- NavBtn -->
-    <style name="Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="bottomNavigationStyle">@style/CustomBottomNavStyle</item>
+    <!-- ButtonNavStyle -->
+    <style name="ButtonNavStyle">
+        <item name="backgroundTint">@color/purple</item>
+        <item name="android:textColor"> @color/white </item>
+        <item name="iconTint"> @color/white </item>
     </style>
 
-    <style name="CustomBottomNavStyle" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="itemTextColor">@color/white</item>
-        <item name="itemBackground">@color/purple</item>
-        <item name="shapeAppearanceOverlay">@style/RoundedBottomNavStyle</item>
-    </style>
-
-    <style name="RoundedBottomNavStyle">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">20dp</item> <!-- radius here -->
-    </style>
 </resources>

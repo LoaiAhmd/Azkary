@@ -44,8 +44,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:orientation="vertical"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="1.0">
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintVertical_bias="0.0">
 
         <com.google.android.material.button.MaterialButton
                 style="@style/MainActvBtnStyle"
@@ -78,7 +78,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintVertical_bias="0.357" app:layout_constraintHorizontal_bias="0.6"/>
+                app:layout_constraintVertical_bias="0.357"
+                app:layout_constraintHorizontal_bias="0.6"/>
 
         <com.google.android.material.button.MaterialButton
                 style="@style/MainActvBtnStyle"
@@ -94,30 +95,47 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintHorizontal_bias="0.4" app:layout_constraintVertical_bias="0.485"/>
-
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-                style="@style/CustomBottomNavStyle"
-                android:id="@+id/id_nav_tasbeeh_page"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                app:menu="@menu/nav_tasbeeh_page_menu"
-                app:layout_constraintWidth_percent="0.5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.4"
+                app:layout_constraintVertical_bias="0.485"
         />
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-                style="@style/CustomBottomNavStyle"
-                android:id="@+id/id_nav_widget_page"
-                android:layout_width="wrap_content"
+
+
+        <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                app:menu="@menu/nav_widget_screen_menu"
-                app:layout_constraintWidth_percent="0.5"
+                android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/id_nav_tasbeeh_page"/>
+                app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.button.MaterialButton
+                    style="@style/ButtonNavStyle"
+                    android:id="@+id/id_nav_widget_page"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="20dp"
+                    android:text="@string/string_nav_widget_page"
+                    app:icon="@drawable/card"
+                    app:cornerRadius="10dp"
+                    app:iconGravity="textTop"
+            />
+
+            <com.google.android.material.button.MaterialButton
+                    style="@style/ButtonNavStyle"
+                    android:id="@+id/id_nav_tasbeeh_page"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_margin="20dp"
+                    android:text="@string/string_nav_tasbeeh_page"
+                    app:icon="@drawable/tasbeeh"
+                    app:iconGravity="textTop"
+                    app:cornerRadius="10dp"
+            />
+
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
