@@ -3,16 +3,11 @@ package com.example.myapplication;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
-import android.content.ComponentName;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.widget.Button;
-import android.widget.CheckBox;
+import android.content.*;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 import io.paperdb.Paper;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -43,18 +38,28 @@ public class Widget extends AppWidgetProvider {
         }
         else
             widget_zekir = " اذكر الله " ;
-
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
         views.setTextViewText(R.id.id_widget_txtv, widget_zekir);
-
         Intent intent = new Intent(context, Widget.class);
         intent.setAction("Change_Zekir");
         intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
                 context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         views.setOnClickPendingIntent(R.id.id_refresh_zekir, pendingIntent);
+
+        Intent opacityIntent = new Intent(context, Widget.class);
+        opacityIntent.setAction("Change_Transparency");
+        opacityIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+
+        PendingIntent opacityPendingIntent = PendingIntent.getBroadcast(
+                context,
+                appWidgetId + 1000,
+                opacityIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+        );
+
+        views.setOnClickPendingIntent(R.id.id_opacity_widget, opacityPendingIntent);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
@@ -63,14 +68,40 @@ public class Widget extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
+        AppWidgetManager widgetManager = AppWidgetManager.getInstance(context);
+
         if("Change_Zekir".equals(intent.getAction())){
             currentIndex++;
-            AppWidgetManager widgetManager = AppWidgetManager.getInstance(context);
             ComponentName thisWidget = new ComponentName(context, Widget.class);
             int[] appWidgetIds = widgetManager.getAppWidgetIds(thisWidget);
 
             for (int appWidgetId : appWidgetIds) {
                 updateAppWidget(context, widgetManager, appWidgetId);
+            }
+        }
+        else if ("Change_Transparency".equals(intent.getAction())) {
+            SharedPreferences sp = context.getSharedPreferences("WidgetPrefs", Context.MODE_PRIVATE);
+            int alpha = sp.getInt("alpha", 255);
+            alpha -= 50;
+            if (alpha <= 50) alpha = 255;
+
+            SharedPreferences.Editor editor = sp.edit();
+            editor.putInt("alpha", alpha);
+            editor.apply();
+
+            ComponentName thisWidget = new ComponentName(context, Widget.class);
+            int[] appWidgetIds = widgetManager.getAppWidgetIds(thisWidget);
+
+            for (int id : appWidgetIds) {
+                RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
+
+                int widget_color = android.graphics.Color.argb(alpha, 200, 200, 200);
+                views.setInt(R.id.id_widget_layout, "setBackgroundColor", widget_color);
+
+                int txtv_color = android.graphics.Color.argb(alpha, 0, 0, 0);
+                views.setInt(R.id.id_widget_txtv, "setBackgroundColor", txtv_color);
+
+                widgetManager.updateAppWidget(id, views);
             }
         }
     }
@@ -89,7 +120,7 @@ public class Widget extends AppWidgetProvider {
                     PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
             );
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
-            views.setOnClickPendingIntent(R.id.id_widget_layout, pendingIntent);
+            views.setOnClickPendingIntent(R.id.id_widget_txtv, pendingIntent);
             appWidgetManager.updateAppWidget(appWidgetId, views);
         }
     }

@@ -22,31 +22,6 @@
             android:padding="20dp"
             style="@style/Screen"
     >
-        <Switch
-                android:id="@+id/id_switch_add_widget"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/string_add_widget"
-                android:textSize="20sp"
-                android:layout_marginBottom="20dp"
-                style="@style/TextAppearance.Material3.BodyLarge"
-        />
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="20dp"
-        >
-            <Switch
-                    android:id="@+id/id_switch_hide_notfications"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/string_auto_hide_notfications"
-                    android:textSize="20sp"
-
-                    style="@style/TextAppearance.Material3.BodyLarge"
-                    tools:ignore="TouchTargetSizeCheck"/>
-        </LinearLayout>
 
         <Switch
                 android:id="@+id/id_switch_dark_mode"
@@ -72,11 +47,12 @@
                     android:text="@string/string_clock_morning_azkar"
                     android:textSize="25sp"
                     android:minHeight="48dp"/>
-            <TextClock
+            <TextView
                     android:id="@+id/id_clock_morning_azkar"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textSize="30sp"
+                    android:text="@string/string_select_time"
+                    android:textSize="20sp"
             />
         </LinearLayout>
 
@@ -94,11 +70,12 @@
                     android:text="@string/string_clock_evening_azkar"
                     android:textSize="25sp"
                     android:minHeight="48dp"/>
-            <TextClock
+            <TextView
                     android:id="@+id/id_clock_evening_azkar"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textSize="30sp"
+                    android:text="@string/string_select_time"
+                    android:textSize="20sp"
             />
 
         </LinearLayout>

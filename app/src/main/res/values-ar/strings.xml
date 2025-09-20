@@ -5,13 +5,24 @@
     <string name="string_evening_azkar"> أذكار المساء </string>
     <string name="string_sleeping_azkar"> أذكار النوم </string>
     <string name="string_waking_azkar"> أذكار الإستيقاظ </string>
+
+    <string name="string_notification_morning_azkar"> حان وقت قراءة أذكار الصباح </string>
+    <string name="string_notification_evening_azkar"> حان وقت قراءة أذكار المساء </string>
+    <string name="string_select_time"> تحديد وقت </string>
     <string name="string_settings"> الإعدادات </string>
-    <string name="string_add_widget"> إضافة عنصر واجهة مصغر إلى الشاشة الرئيسية </string>
-    <string name="string_auto_hide_notfications"> الإخفاء التلقائي </string>
-    <string name="string_auto_hide_notfications_hint"> تختفي الإشعارات تلقائيًا بعد 10 ثواني </string>
+    <string name="string_notifications_allowed">تم تفعيل الإشعارات </string>
+    <string name="string_notifications_denied">تم إلغاء تفعيل الإشعارات</string>
     <string name="string_dark_mode"> الوضع المظلم </string>
+
     <string name="string_clock_morning_azkar"> إضافة تنبيه لأذكار الصباح </string>
     <string name="string_clock_evening_azkar"> إضافة تنبيه لأذكار المساء </string>
+    <string name="string_alarm_morning_azkar_enabled">تم تفعيل منبه لأذكار الصباح</string>
+    <string name="string_alarm_morning_azkar_disabled">تم إلغاء تفعيل منبه أذكار الصباح</string>
+    <string name="string_alarm_evening_azkar_enabled">تم تفعيل منبه لأذكار المساء</string>
+    <string name="string_alarm_evening_azkar_disabled">تم إلغاء تفعيل منبه أذكار المساء</string>
+    <string name="string_channel_morning_azkar"> إشعارات أذكار الصباح  </string>
+    <string name="string_channel_evening_azkar"> إشعارات أذكار المساء  </string>
+
     <string name="string_widget_azkar_on_home_screen"> الأذكار على الشاشة الرئيسية </string>
     <string name="string_title_add_new_zekir"> إضافة ذكر جديد </string>
     <string name="string_btn_add_new_zekir"> إضافة </string>
