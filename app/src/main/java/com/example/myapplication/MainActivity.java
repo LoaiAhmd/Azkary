@@ -29,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        Button praying_azkar_btn = findViewById(R.id.id_praying_btn);
+        praying_azkar_btn.setOnClickListener(v -> {
+            Intent praying_intent = new Intent(MainActivity.this, PrayingAzkar.class);
+            startActivity(praying_intent);
+        });
+
         Button morning_azkar_btn = findViewById(R.id.id_morning_btn);
         morning_azkar_btn.setOnClickListener(v -> {
             Intent morning_intent = new Intent(MainActivity.this, MorningAzkar.class);
@@ -41,10 +47,16 @@ public class MainActivity extends AppCompatActivity {
             startActivity(evening_intent);
         });
 
-        Button tasbeeh_btn = findViewById(R.id.id_sleeping_azkar_btn);
-        tasbeeh_btn.setOnClickListener(v -> {
-            Intent tasbeeh_intent = new Intent(MainActivity.this, SleepingAzkar.class);
-            startActivity(tasbeeh_intent);
+        Button sleeping_btn = findViewById(R.id.id_sleeping_azkar_btn);
+        sleeping_btn.setOnClickListener(v -> {
+            Intent sleeping_intent = new Intent(MainActivity.this, SleepingAzkar.class);
+            startActivity(sleeping_intent);
+        });
+
+        Button waking_btn = findViewById(R.id.id_waking_azkar_btn);
+        waking_btn.setOnClickListener(v -> {
+            Intent waking_intent = new Intent(MainActivity.this, WakingAzkar.class);
+            startActivity(waking_intent);
         });
 
         ImageButton settings = findViewById(R.id.id_settings);

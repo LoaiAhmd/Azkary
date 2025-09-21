@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="string_app_name">Azkar</string>
+    <string name="string_app_name">My Azkar</string>
     <string name="string_morning_azkar">أذكار الصباح</string>
     <string name="string_evening_azkar">أذكار المساء</string>
     <string name="string_sleeping_azkar">أذكار النوم</string>
     <string name="string_waking_azkar">أذكار الإستيقاظ</string>
-    <string name="string_notification_morning_azkar"> Time for Reading Azkar </string>
-    <string name="string_notification_evening_azkar"> Time for Reading Azkar </string>
-    <string name="string_select_time"> Select Time </string>
+    <string name="string_praying_azkar">أذكار بعد الصلاة</string>
+
+    <string name="string_notification_morning_azkar">Time for Reading Azkar</string>
+    <string name="string_notification_evening_azkar">Time for Reading Azkar</string>
+    <string name="string_select_time">Select Time</string>
     <string name="string_settings">Settings</string>
 
-    <string name="string_notifications_allowed">Notifications Enabled </string>
+    <string name="string_notifications_allowed">Notifications Enabled</string>
     <string name="string_notifications_denied">Notifications Disabled</string>
     <string name="string_dark_mode">Dark Mode</string>
 
@@ -20,8 +22,8 @@
     <string name="string_alarm_morning_azkar_disabled">تم إلغاء تفعيل منبه أذكار الصباح</string>
     <string name="string_alarm_evening_azkar_enabled">تم تفعيل منبه لأذكار المساء</string>
     <string name="string_alarm_evening_azkar_disabled">تم إلغاء تفعيل منبه أذكار المساء</string>
-    <string name="string_channel_morning_azkar"> إشعارات أذكار الصباح  </string>
-    <string name="string_channel_evening_azkar"> إشعارات أذكار المساء  </string>
+    <string name="string_channel_morning_azkar">إشعارات أذكار الصباح</string>
+    <string name="string_channel_evening_azkar">إشعارات أذكار المساء</string>
 
     <string name="string_widget_azkar_on_home_screen">Azkar on Home Screen Widget</string>
     <string name="string_title_add_new_zekir">Add New Zekr</string>

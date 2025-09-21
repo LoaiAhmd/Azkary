@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.SET_ALARM"/>
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
 
     <application
             android:allowBackup="true"
@@ -15,6 +15,12 @@
             android:roundIcon="@mipmap/app_icon"
             android:supportsRtl="true"
             android:theme="@style/Theme.MyApplication">
+        <activity
+                android:name=".PrayingAzkar"
+                android:exported="false"/>
+        <activity
+                android:name=".WakingAzkar"
+                android:exported="false"/>
         <activity
                 android:name=".SleepingAzkar"
                 android:exported="false"/>
@@ -59,10 +65,11 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <receiver android:name=".AlarmReceiver"
-                  android:enabled="true"
-                  android:exported="true"
-        >
+
+        <receiver
+                android:name=".AlarmReceiver"
+                android:enabled="true"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>

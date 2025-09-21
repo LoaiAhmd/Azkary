@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/id_praying_activity"
+        tools:context=".PrayingAzkar">
+
+    <!-- Toolbar -->
+
+    <!-- RecyclerView -->
+    <com.google.android.material.appbar.MaterialToolbar
+            style="@style/ToolBarStyle"
+            android:id="@+id/id_pray_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:title="@string/string_praying_azkar"
+    >
+        <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/tasbih"
+                android:layout_gravity="top|left"
+                android:layout_marginHorizontal="10dp"
+        />
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/id_pray_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:listitem="@layout/item_zekr" />
+
+</LinearLayout>

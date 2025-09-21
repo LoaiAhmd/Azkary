@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 public class Zekir_ {
     private String _zekir;
+    private String _note;
     private int _counts;
     private char _category;
 
@@ -10,6 +11,13 @@ public class Zekir_ {
     }
 
     public Zekir_(String _zekir, int _counts, char _category) {
+        this._zekir = _zekir;
+        this._counts = _counts;
+        this._category = _category;
+    }
+
+    public Zekir_(String _note, String _zekir, int _counts, char _category) {
+        this._note = _note;
         this._zekir = _zekir;
         this._counts = _counts;
         this._category = _category;
@@ -39,6 +47,13 @@ public class Zekir_ {
         this._category = _category;
     }
 
+    public String get_note() {
+        return _note;
+    }
+
+    public void set_note(String _note) {
+        this._note = _note;
+    }
 
     public void add_Zekir(String _zekir, int _counts, char _category){
 

@@ -10,16 +10,17 @@ import androidx.annotation.Nullable;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "AzkarDataBase.db";
-    public static final int DATABASE_VERSION = 12;
-    public SQLiteDatabase DB = null;
+    public static final int DATABASE_VERSION = 15;
 
-    // Table names and columns
+    public static final String TBL_PRAYING_AZKAR = "tbl_praying_azkar";
     public static final String TBL_MORNING_AZKAR = "tbl_morning_azkar";
     public static final String TBL_EVENING_AZKAR = "tbl_evening_azkar";
     public static final String TBL_WIDGET_AZKAR = "tbl_widget_azkar";
     public static final String TBL_SLEEPING_AZKAR = "tbl_sleeping_azkar";
+    public static final String TBL_WAKING_AZKAR = "tbl_waking_azkar";
     public static final String COL_ID = "col_id";
     public static final String COL_ZEKIR = "col_zekir";
+    public static final String COL_NOTE = "col_note";
     public static final String COL_COUNTS = "col_counts";
     public static final String COL_CATEGORY = "col_category";
 
@@ -31,6 +32,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        //---------------- PRAYING AZKAR TABLE ----------------//
+        Create_Praying_Azkar_Table(db);
+
         //---------------- MORNING AZKAR TABLE ----------------//
         Create_Morning_Azkar_Table(db);
 
@@ -42,15 +46,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         //---------------- SLEEPING AZKAR TABLE ----------------//
         Create_Sleeping_Azkar_Table(db);
+
+        //---------------- WAkING AZKAR TABLE ----------------//
+        Create_Waking_Azkar_Table(db);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TBL_PRAYING_AZKAR);
         db.execSQL("DROP TABLE IF EXISTS " + TBL_MORNING_AZKAR);
         db.execSQL("DROP TABLE IF EXISTS " + TBL_EVENING_AZKAR);
         db.execSQL("DROP TABLE IF EXISTS " + TBL_WIDGET_AZKAR);
         db.execSQL("DROP TABLE IF EXISTS " + TBL_SLEEPING_AZKAR);
+        db.execSQL("DROP TABLE IF EXISTS " + TBL_WAKING_AZKAR);
         onCreate(db);
+    }
+
+    private void Create_Praying_Azkar_Table(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE " + TBL_PRAYING_AZKAR + " (" +
+                COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                COL_NOTE + " TEXT NOT NULL," +
+                COL_ZEKIR + " TEXT NOT NULL," +
+                COL_COUNTS + " INTEGER," +
+                COL_CATEGORY + " CHAR(1))");
+
+        for (int i = 0; i < ad.size_P(); i++) {
+            ContentValues cv = new ContentValues();
+            cv.put(COL_NOTE, ad.getZekir_P(i).get_note());
+            cv.put(COL_ZEKIR, ad.getZekir_P(i).get_zekir());
+            cv.put(COL_COUNTS, ad.getZekir_P(i).get_counts());
+            cv.put(COL_CATEGORY, (byte) String.valueOf(ad.getZekir_P(i).get_category()).charAt(0));
+            db.insert(TBL_PRAYING_AZKAR, null, cv);
+        }
+    }
+    public Cursor getPrayingAzkar() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TBL_PRAYING_AZKAR, null);
     }
 
     public void Create_Morning_Azkar_Table(SQLiteDatabase db){
@@ -173,4 +204,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM " + TBL_SLEEPING_AZKAR, null);
     }
 
+
+    private void Create_Waking_Azkar_Table(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE " + TBL_WAKING_AZKAR + " (" +
+                COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                COL_ZEKIR + " TEXT NOT NULL," +
+                COL_COUNTS + " INTEGER," +
+                COL_CATEGORY + " CHAR(1))");
+
+        for (int i = 0; i < ad.size_K(); i++) {
+            ContentValues cv = new ContentValues();
+            cv.put(COL_ZEKIR, ad.getZekir_K(i).get_zekir());
+            cv.put(COL_COUNTS, ad.getZekir_K(i).get_counts());
+            cv.put(COL_CATEGORY, (byte) String.valueOf(ad.getZekir_K(i).get_category()).charAt(0));
+            db.insert(TBL_WAKING_AZKAR, null, cv);
+        }
+    }
+
+    public Cursor getWakingAzkar() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        return db.rawQuery("SELECT * FROM " + TBL_WAKING_AZKAR, null);
+    }
 }
