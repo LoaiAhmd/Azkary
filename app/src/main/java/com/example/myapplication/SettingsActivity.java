@@ -66,6 +66,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         boolean morningEnabled = sp.getBoolean("morning_azkar_enabled", false);
         swch_morningAzkar.setChecked(morningEnabled);
+        clk_morningAzkar.setEnabled(morningEnabled);
 
         String saved_mor_Time = sp.getString("set_morning_alarm", getString(R.string.string_select_time));
         clk_morningAzkar.setText(saved_mor_Time);
@@ -88,6 +89,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         boolean eveningAzkarEnabled = sp.getBoolean("evening_azkar_enabled", false);
         swch_eveningAzkar.setChecked(eveningAzkarEnabled);
+        clk_eveningAzkar.setEnabled(eveningAzkarEnabled);
 
         String saved_eve_Time = sp.getString("set_evening_alarm", getString(R.string.string_select_time));
         clk_eveningAzkar.setText(saved_eve_Time);

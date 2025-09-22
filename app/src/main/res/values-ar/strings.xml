@@ -32,7 +32,7 @@
     <string name="string_btn_update"> تعديل </string>
     <string name="string_btn_delete"> حذف </string>
     <string name="string_nav_tasbeeh_page"> تسبيح </string>
-    <string name="string_nav_widget_page"> أذكار الشاشة الرئيسية </string>
+    <string name="string_nav_widget_page">أذكار التطبيق المصغر</string>
 
     <!-- Missing strings translated -->
     <string name="next">التالي</string>

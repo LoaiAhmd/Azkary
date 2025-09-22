@@ -24,7 +24,6 @@ public class WidgetAzkarAdapter extends RecyclerView.Adapter<WidgetAzkarAdapter.
     public WidgetAzkarAdapter(Context context, ArrayList<String> lst_widet_azkar) {
         this.context = context;
         this.lst_widet_azkar = lst_widet_azkar;
-
         this.sp_status = context.getSharedPreferences("CheckedAzkar", context.MODE_PRIVATE);
     }
 
@@ -39,15 +38,17 @@ public class WidgetAzkarAdapter extends RecyclerView.Adapter<WidgetAzkarAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String zekir = lst_widet_azkar.get(position);
 
-        boolean checked = sp_status.getBoolean(zekir, false);
+        boolean checked = sp_status.getBoolean(zekir, true);
+        SharedPreferences.Editor status_editor = sp_status.edit();
 
         holder.chkbox_zekir.setOnCheckedChangeListener(null);
 
         holder.chkbox_zekir.setText(zekir);
         holder.chkbox_zekir.setChecked(checked);
-
+        status_editor.putBoolean(zekir, checked);
+        status_editor.apply();
+        updateWidget();
         holder.chkbox_zekir.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            SharedPreferences.Editor status_editor = sp_status.edit();
             status_editor.putBoolean(zekir, isChecked);
             status_editor.apply();
 

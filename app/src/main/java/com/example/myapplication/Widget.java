@@ -25,7 +25,6 @@ public class Widget extends AppWidgetProvider {
         ArrayList<String> lst_checked_azkar = new ArrayList<>();
 
         String widget_zekir;
-        boolean isChecked;
 
         for (String zekir: lst_full_azkar) {
             if(sp_status.getBoolean(zekir, false))
@@ -37,7 +36,8 @@ public class Widget extends AppWidgetProvider {
             widget_zekir = lst_checked_azkar.get(currentIndex);
         }
         else
-            widget_zekir = " اذكر الله " ;
+            widget_zekir = " اذكر الله ";
+
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
         views.setTextViewText(R.id.id_widget_txtv, widget_zekir);
         Intent intent = new Intent(context, Widget.class);

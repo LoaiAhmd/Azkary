@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.app.AlertDialog;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -108,6 +110,14 @@ public class WidgetAzkarPage extends AppCompatActivity {
             while (cursor.moveToNext()){
                 lst_widget_azkar.add(cursor.getString(cursor.getColumnIndexOrThrow("col_zekir")));
             }
+            Paper.book().write("full_azkar_list", lst_widget_azkar);
+        }
+        Widget widget = new Widget();
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
+        ComponentName thisWidget = new ComponentName(this, Widget.class);
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget);
+        for (int id : appWidgetIds) {
+            Widget.updateAppWidget(this, appWidgetManager, id);
         }
     }
 

@@ -31,6 +31,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/edit"
                     android:background="@null"
+                    android:layout_gravity="center"
                     style="@style/MyImageButtonStyle"
                     tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
             />
