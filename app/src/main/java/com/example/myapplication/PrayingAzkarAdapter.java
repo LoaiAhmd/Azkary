@@ -65,6 +65,7 @@ public class PrayingAzkarAdapter extends RecyclerView.Adapter<PrayingAzkarAdapte
             else{
                 lst_counts.remove(adapterPos);
                 lst_zekir.remove(adapterPos);
+                lst_note.remove(adapterPos);
                 notifyItemRemoved(adapterPos);
                 if(lst_zekir.isEmpty()) ((AppCompatActivity) context).finish();
             }
