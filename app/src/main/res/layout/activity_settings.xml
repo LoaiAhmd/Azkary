@@ -12,7 +12,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:title="@string/string_settings"
-                tools:targetApi="34"/>
+                tools:targetApi="34"
+
+        />
 
     <LinearLayout
             android:id="@+id/id_settings_layout"

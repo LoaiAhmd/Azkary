@@ -6,9 +6,12 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         tools:context=".MainActivity">
 
     <!--===========Tool Bar===================-->
+
+    <!--=======================Page===================-->
     <androidx.appcompat.widget.Toolbar
             style="@style/ToolBarStyle"
             android:id="@+id/toolbar"
@@ -16,8 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:title="@string/string_app_name"
-            tools:ignore="MissingConstraints,UnknownId"
-            tools:layout_editor_absoluteX="0dp">
+            app:layout_constraintHorizontal_bias="0.0" tools:ignore="MissingConstraints">
 
         <ImageButton
                 style="@style/MyImageButtonStyle"
@@ -32,8 +34,6 @@
                 tools:layout_editor_absoluteX="10dp"/>
 
     </androidx.appcompat.widget.Toolbar>
-
-    <!--=======================Page===================-->
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -122,39 +122,33 @@
                 app:layout_constraintHorizontal_weight="1"
                 android:layout_margin="10dp"/>
 
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+        <com.google.android.material.button.MaterialButton
+                style="@style/ButtonNavStyle"
+                android:id="@+id/id_nav_widget_page"
+                android:layout_width="0dp"
+                android:layout_margin="10dp"
+                android:text="@string/string_nav_widget_page"
+                app:icon="@drawable/card"
+                app:iconGravity="textTop"
+                app:cornerRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintEnd_toStartOf="@+id/id_nav_tasbeeh_page"
+        />
 
-            <com.google.android.material.button.MaterialButton
-                    style="@style/ButtonNavStyle"
-                    android:id="@+id/id_nav_widget_page"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_margin="20dp"
-                    android:text="@string/string_nav_widget_page"
-                    app:icon="@drawable/card"
-                    app:iconGravity="textTop"
-                    app:cornerRadius="10dp"
-            />
-
-            <com.google.android.material.button.MaterialButton
-                    style="@style/ButtonNavStyle"
-                    android:id="@+id/id_nav_tasbeeh_page"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_margin="20dp"
-                    android:text="@string/string_nav_tasbeeh_page"
-                    app:icon="@drawable/tasbeeh"
-                    app:iconGravity="textTop"
-                    app:cornerRadius="10dp"
-            />
-
-        </LinearLayout>
+        <com.google.android.material.button.MaterialButton
+                style="@style/ButtonNavStyle"
+                android:id="@+id/id_nav_tasbeeh_page"
+                android:layout_width="0dp"
+                android:layout_margin="10dp"
+                android:text="@string/string_nav_tasbeeh_page"
+                app:icon="@drawable/tasbeeh"
+                app:iconGravity="textTop"
+                app:cornerRadius="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/id_nav_widget_page"
+                app:layout_constraintEnd_toEndOf="parent"
+        />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

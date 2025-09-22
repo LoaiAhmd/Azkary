@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="string_app_name">My Azkar</string>
-    <string name="string_morning_azkar">أذكار الصباح</string>
-    <string name="string_evening_azkar">أذكار المساء</string>
-    <string name="string_sleeping_azkar">أذكار النوم</string>
-    <string name="string_waking_azkar">أذكار الإستيقاظ</string>
-    <string name="string_praying_azkar">أذكار بعد الصلاة</string>
+    <string name="string_morning_azkar">Morning Azkar</string>
+    <string name="string_evening_azkar">Evening Azkar</string>
+    <string name="string_sleeping_azkar">Sleeping Azkar</string>
+    <string name="string_waking_azkar">Waking Up Azkar</string>
+    <string name="string_praying_azkar">After Prayer Azkar</string>
 
-    <string name="string_notification_morning_azkar">Time for Reading Azkar</string>
-    <string name="string_notification_evening_azkar">Time for Reading Azkar</string>
+    <string name="string_notification_morning_azkar">Time for Morning Azkar</string>
+    <string name="string_notification_evening_azkar">Time for Evening Azkar</string>
     <string name="string_select_time">Select Time</string>
     <string name="string_settings">Settings</string>
 
@@ -16,16 +16,16 @@
     <string name="string_notifications_denied">Notifications Disabled</string>
     <string name="string_dark_mode">Dark Mode</string>
 
-    <string name="string_clock_morning_azkar">إضافة تنبيه لأذكار الصباح</string>
-    <string name="string_clock_evening_azkar">إضافة تنبيه لأذكار المساء</string>
-    <string name="string_alarm_morning_azkar_enabled">تم تفعيل منبه لأذكار الصباح</string>
-    <string name="string_alarm_morning_azkar_disabled">تم إلغاء تفعيل منبه أذكار الصباح</string>
-    <string name="string_alarm_evening_azkar_enabled">تم تفعيل منبه لأذكار المساء</string>
-    <string name="string_alarm_evening_azkar_disabled">تم إلغاء تفعيل منبه أذكار المساء</string>
-    <string name="string_channel_morning_azkar">إشعارات أذكار الصباح</string>
-    <string name="string_channel_evening_azkar">إشعارات أذكار المساء</string>
+    <string name="string_clock_morning_azkar">Add Alarm for Morning Azkar</string>
+    <string name="string_clock_evening_azkar">Add Alarm for Evening Azkar</string>
+    <string name="string_alarm_morning_azkar_enabled">Morning Azkar Alarm Enabled</string>
+    <string name="string_alarm_morning_azkar_disabled">Morning Azkar Alarm Disabled</string>
+    <string name="string_alarm_evening_azkar_enabled">Evening Azkar Alarm Enabled</string>
+    <string name="string_alarm_evening_azkar_disabled">Evening Azkar Alarm Disabled</string>
+    <string name="string_channel_morning_azkar">Morning Azkar Notifications</string>
+    <string name="string_channel_evening_azkar">Evening Azkar Notifications</string>
 
-    <string name="string_widget_azkar_on_home_screen">Azkar on Home Screen Widget</string>
+    <string name="string_widget_azkar_on_home_screen">Azkar Home Screen Widget</string>
     <string name="string_title_add_new_zekir">Add New Zekr</string>
     <string name="string_btn_add_new_zekir">Add</string>
     <string name="string_toast_added">Added Successfully</string>
@@ -33,7 +33,7 @@
     <string name="string_btn_update">Update</string>
     <string name="string_btn_delete">Delete</string>
     <string name="string_nav_tasbeeh_page">Tasbeeh</string>
-    <string name="string_nav_widget_page">Widget Page Azkar</string>
+    <string name="string_nav_widget_page">Azkar Widget Page</string>
     <string name="string_count">0</string>
 
     <!-- Missing strings -->
