@@ -42,7 +42,7 @@ public class MorningAzkarAdapter extends RecyclerView.Adapter<MorningAzkarAdapte
         holder.txtv_zekir.setText(lst_zekir.get(position));
         holder.btn_counts.setText(String.valueOf(lst_counts.get(position)));
 
-        holder.btn_counts.setOnClickListener(v -> {
+        View.OnClickListener clickListener = v -> {
             int adapterPos = holder.getAdapterPosition();
             if (adapterPos == RecyclerView.NO_POSITION) return;
 
@@ -57,7 +57,10 @@ public class MorningAzkarAdapter extends RecyclerView.Adapter<MorningAzkarAdapte
                 notifyItemRemoved(adapterPos);
                 if(lst_zekir.isEmpty()) ((AppCompatActivity) context).finish();
             }
-        });
+        };
+        holder.btn_counts.setOnClickListener(clickListener);
+        holder.card.setOnClickListener(clickListener);
+        holder.txtv_zekir.setOnClickListener(clickListener);
 
         holder.img_copy_btn.setOnClickListener(v -> {
             copyToClipboard(context, holder.txtv_zekir.getText().toString());

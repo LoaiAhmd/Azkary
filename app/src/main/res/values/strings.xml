@@ -24,6 +24,7 @@
     <string name="string_alarm_evening_azkar_disabled">Evening Azkar Alarm Disabled</string>
     <string name="string_channel_morning_azkar">Morning Azkar Notifications</string>
     <string name="string_channel_evening_azkar">Evening Azkar Notifications</string>
+    <string name="string_select_alarm">Select Alarm</string>
 
     <string name="string_widget_azkar_on_home_screen">Azkar Home Screen Widget</string>
     <string name="string_title_add_new_zekir">Add New Zekr</string>

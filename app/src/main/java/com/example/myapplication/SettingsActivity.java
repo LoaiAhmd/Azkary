@@ -152,7 +152,7 @@ public class SettingsActivity extends AppCompatActivity {
         timePicker = new MaterialTimePicker.Builder()
                 .setTimeFormat(TimeFormat.CLOCK_12H)
                 .setMinute(0)
-                .setTitleText("Select Alarm")
+                .setTitleText(R.string.string_select_alarm)
                 .build();
 
         timePicker.show(getSupportFragmentManager(), "channelid_morningazkar");
@@ -170,7 +170,10 @@ public class SettingsActivity extends AppCompatActivity {
             calendar.set(Calendar.MINUTE, timePicker.getMinute());
             calendar.set(Calendar.SECOND, 0);
             calendar.set(Calendar.MILLISECOND, 0);
+            editor.putInt("hour_morning", timePicker.getHour()).apply();
+            editor.putInt("minute_morning", timePicker.getMinute()).apply();
             enableAlarmMorningAzkar();
+
         });
     }
 
@@ -196,7 +199,10 @@ public class SettingsActivity extends AppCompatActivity {
             calendar.set(Calendar.MINUTE, timePicker.getMinute());
             calendar.set(Calendar.SECOND, 0);
             calendar.set(Calendar.MILLISECOND, 0);
+            editor.putInt("hour_evening", timePicker.getHour()).apply();
+            editor.putInt("minute_evening", timePicker.getMinute()).apply();
             enableAlarmEveningAzkar();
+
         });
     }
 
