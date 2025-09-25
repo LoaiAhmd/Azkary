@@ -21,7 +21,6 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         SharedPreferences sp = context.getSharedPreferences("notifications", Context.MODE_PRIVATE);
-        boolean notifications = sp.getBoolean("notifications", false);
 
         String action = intent.getAction();
         int hour_mor = sp.getInt("hour_morning", 12);
@@ -30,10 +29,14 @@ public class AlarmReceiver extends BroadcastReceiver {
         int hour_eve = sp.getInt("hour_evening", 12);
         int minute_eve = sp.getInt("minute_evening", 0);
 
-        if ("MORNING_AZKAR".equals(action)) {
+        boolean isMorningEnabled = sp.getBoolean("morning_azkar_enabled", false);
+        boolean isEveningEnabled = sp.getBoolean("evening_azkar_enabled", false);
+
+        if (!isMorningEnabled && "MORNING_AZKAR".equals(action)) {
             showMorningNotification(context);
             rescheduleAlarm(context, "MORNING_AZKAR", hour_mor, minute_mor);
-        } else if ("EVENING_AZKAR".equals(action)) {
+        }
+        else if (!isEveningEnabled && "EVENING_AZKAR".equals(action)) {
             showEveningNotification(context);
             rescheduleAlarm(context, "EVENING_AZKAR", hour_eve, minute_eve);
         }
@@ -68,31 +71,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         NotificationManagerCompat.from(context).notify(1, builder.build());
     }
 
-    private void rescheduleAlarm(Context context, String action, int hour, int minute) {
-        Calendar next = Calendar.getInstance();
-        next.add(Calendar.DAY_OF_YEAR, 1);
-        next.set(Calendar.HOUR_OF_DAY, hour);
-        next.set(Calendar.MINUTE, minute);
-        next.set(Calendar.SECOND, 0);
-        next.set(Calendar.MILLISECOND, 0);
-
-        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(context, AlarmReceiver.class);
-        intent.setAction(action);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                context,
-                action.equals("MORNING_AZKAR") ? 0 : 1,
-                intent,
-                PendingIntent.FLAG_IMMUTABLE
-        );
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, next.getTimeInMillis(), pendingIntent);
-        } else {
-            am.setExact(AlarmManager.RTC_WAKEUP, next.getTimeInMillis(), pendingIntent);
-        }
-
-    }
-
     private void showEveningNotification(Context context) {
         Intent intent = new Intent(context, EveningAzkar.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -122,4 +100,33 @@ public class AlarmReceiver extends BroadcastReceiver {
         NotificationManagerCompat.from(context).notify(2, builder.build());
 
     }
+
+    private void rescheduleAlarm(Context context, String action, int hour, int minute) {
+        Calendar next = Calendar.getInstance();
+        next.set(Calendar.HOUR_OF_DAY, hour);
+        next.set(Calendar.MINUTE, minute);
+        next.set(Calendar.SECOND, 0);
+        next.set(Calendar.MILLISECOND, 0);
+
+        if (next.before(Calendar.getInstance())) {
+            next.add(Calendar.DAY_OF_YEAR, 1);
+        }
+
+        AlarmManager am = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(context, AlarmReceiver.class);
+        intent.setAction(action);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(
+                context,
+                action.equals("MORNING_AZKAR") ? 0 : 1,
+                intent,
+                PendingIntent.FLAG_IMMUTABLE
+        );
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, next.getTimeInMillis(), pendingIntent);
+        } else {
+            am.setExact(AlarmManager.RTC_WAKEUP, next.getTimeInMillis(), pendingIntent);
+        }
+
+    }
+
 }

@@ -74,9 +74,11 @@ public class SettingsActivity extends AppCompatActivity {
         swch_morningAzkar.setOnCheckedChangeListener((buttonView, isChecked) -> {
             editor.putBoolean("morning_azkar_enabled", isChecked).apply();
             clk_morningAzkar.setEnabled(isChecked);
-            if (!isChecked) {
+            if(isChecked){
+                enableAlarmMorningAzkar();
+            }
+            else if (!isChecked) {
                 disableAlarmMorningAzkar();
-
             }
         });
         clk_morningAzkar.setOnClickListener(v -> {
@@ -94,10 +96,12 @@ public class SettingsActivity extends AppCompatActivity {
         String saved_eve_Time = sp.getString("set_evening_alarm", getString(R.string.string_select_time));
         clk_eveningAzkar.setText(saved_eve_Time);
         swch_eveningAzkar.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            editor.putBoolean("evening_azkar_enabled", isChecked);
-            editor.apply();
+            editor.putBoolean("evening_azkar_enabled", isChecked).apply();
             clk_eveningAzkar.setEnabled(isChecked);
-            if (!isChecked) {
+            if (isChecked){
+                enableAlarmEveningAzkar();
+            }
+            else if (!isChecked) {
                 disableAlarmEveningAzkar();
             }
         });
@@ -151,7 +155,8 @@ public class SettingsActivity extends AppCompatActivity {
     private void setAlarmMorningAzkar() {
         timePicker = new MaterialTimePicker.Builder()
                 .setTimeFormat(TimeFormat.CLOCK_12H)
-                .setMinute(0)
+                .setHour(sp.getInt("hour_morning", 11))
+                .setMinute(sp.getInt("minute_morning", 0))
                 .setTitleText(R.string.string_select_alarm)
                 .build();
 
@@ -172,15 +177,33 @@ public class SettingsActivity extends AppCompatActivity {
             calendar.set(Calendar.MILLISECOND, 0);
             editor.putInt("hour_morning", timePicker.getHour()).apply();
             editor.putInt("minute_morning", timePicker.getMinute()).apply();
-            enableAlarmMorningAzkar();
 
+            alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            Intent intent = new Intent(this, AlarmReceiver.class);
+            intent.setAction("MORNING_AZKAR");
+            pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                alarmManager.setExactAndAllowWhileIdle(
+                        AlarmManager.RTC_WAKEUP,
+                        calendar.getTimeInMillis(),
+                        pendingIntent
+                );
+            } else {
+                alarmManager.setExact(
+                        AlarmManager.RTC_WAKEUP,
+                        calendar.getTimeInMillis(),
+                        pendingIntent
+                );
+            }
         });
     }
 
     private void setAlarmEveningAzkar() {
         timePicker = new MaterialTimePicker.Builder()
                 .setTimeFormat(TimeFormat.CLOCK_12H)
-                .setMinute(0)
+                .setHour(sp.getInt("hour_evening", 11))
+                .setMinute(sp.getInt("minute_evening", 0))
                 .setTitleText("Select Alarm")
                 .build();
 
@@ -201,8 +224,25 @@ public class SettingsActivity extends AppCompatActivity {
             calendar.set(Calendar.MILLISECOND, 0);
             editor.putInt("hour_evening", timePicker.getHour()).apply();
             editor.putInt("minute_evening", timePicker.getMinute()).apply();
-            enableAlarmEveningAzkar();
 
+            alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+            Intent intent = new Intent(this, AlarmReceiver.class);
+            intent.setAction("EVENING_AZKAR");
+            pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_IMMUTABLE);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                alarmManager.setExactAndAllowWhileIdle(
+                        AlarmManager.RTC_WAKEUP,
+                        calendar.getTimeInMillis(),
+                        pendingIntent
+                );
+            } else {
+                alarmManager.setExact(
+                        AlarmManager.RTC_WAKEUP,
+                        calendar.getTimeInMillis(),
+                        pendingIntent
+                );
+            }
         });
     }
 
@@ -215,24 +255,7 @@ public class SettingsActivity extends AppCompatActivity {
                 return;
             }
         }
-        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        Intent intent = new Intent(this, AlarmReceiver.class);
-        intent.setAction("MORNING_AZKAR");
-        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            alarmManager.setExactAndAllowWhileIdle(
-                    AlarmManager.RTC_WAKEUP,
-                    calendar.getTimeInMillis(),
-                    pendingIntent
-            );
-        } else {
-            alarmManager.setExact(
-                    AlarmManager.RTC_WAKEUP,
-                    calendar.getTimeInMillis(),
-                    pendingIntent
-            );
-        }
+        setAlarmMorningAzkar();
         Toast.makeText(this, R.string.string_alarm_morning_azkar_enabled, Toast.LENGTH_SHORT).show();
     }
 
@@ -245,29 +268,13 @@ public class SettingsActivity extends AppCompatActivity {
                 return;
             }
         }
-        alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        Intent intent = new Intent(this, AlarmReceiver.class);
-        intent.setAction("EVENING_AZKAR");
-        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            alarmManager.setExactAndAllowWhileIdle(
-                    AlarmManager.RTC_WAKEUP,
-                    calendar.getTimeInMillis(),
-                    pendingIntent
-            );
-        } else {
-            alarmManager.setExact(
-                    AlarmManager.RTC_WAKEUP,
-                    calendar.getTimeInMillis(),
-                    pendingIntent
-            );
-        }
+        setAlarmEveningAzkar();
         Toast.makeText(this, R.string.string_alarm_evening_azkar_enabled, Toast.LENGTH_SHORT).show();
     }
 
     private void disableAlarmMorningAzkar() {
         Intent intent = new Intent(this, AlarmReceiver.class);
+        intent.setAction("MORNING_AZKAR");
         pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         if (alarmManager == null) {
@@ -279,7 +286,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void disableAlarmEveningAzkar() {
         Intent intent = new Intent(this, AlarmReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+        intent.setAction("EVENING_AZKAR");
+        pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_IMMUTABLE);
 
         if (alarmManager == null) {
             alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
