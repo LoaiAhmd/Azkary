@@ -4,7 +4,7 @@
     <string name="string_morning_azkar"> أذكار الصباح </string>
     <string name="string_evening_azkar"> أذكار المساء </string>
     <string name="string_sleeping_azkar"> أذكار النوم </string>
-    <string name="string_waking_azkar"> أذكار الاِستيقاظ </string>
+    <string name="string_waking_azkar"> أذكار الاستيقاظ </string>
     <string name="string_praying_azkar"> أذكار بعد الصلاة </string>
 
     <string name="string_notification_morning_azkar"> حان وقت قراءة أذكار الصباح </string>

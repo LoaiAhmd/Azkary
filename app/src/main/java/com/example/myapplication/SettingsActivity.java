@@ -175,6 +175,9 @@ public class SettingsActivity extends AppCompatActivity {
             calendar.set(Calendar.MINUTE, timePicker.getMinute());
             calendar.set(Calendar.SECOND, 0);
             calendar.set(Calendar.MILLISECOND, 0);
+            if (calendar.getTimeInMillis() <= System.currentTimeMillis()) {
+                calendar.add(Calendar.DAY_OF_YEAR, 1);
+            }
             editor.putInt("hour_morning", timePicker.getHour()).apply();
             editor.putInt("minute_morning", timePicker.getMinute()).apply();
 
@@ -183,19 +186,22 @@ public class SettingsActivity extends AppCompatActivity {
             intent.setAction("MORNING_AZKAR");
             pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                    AlarmManager.INTERVAL_DAY, pendingIntent);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 alarmManager.setExactAndAllowWhileIdle(
                         AlarmManager.RTC_WAKEUP,
                         calendar.getTimeInMillis(),
                         pendingIntent
                 );
-            } else {
-                alarmManager.setExact(
-                        AlarmManager.RTC_WAKEUP,
-                        calendar.getTimeInMillis(),
-                        pendingIntent
-                );
             }
+//            else {
+//                alarmManager.setExact(
+//                        AlarmManager.RTC_WAKEUP,
+//                        calendar.getTimeInMillis(),
+//                        pendingIntent
+//                );
+//            }
         });
     }
 
@@ -222,6 +228,10 @@ public class SettingsActivity extends AppCompatActivity {
             calendar.set(Calendar.MINUTE, timePicker.getMinute());
             calendar.set(Calendar.SECOND, 0);
             calendar.set(Calendar.MILLISECOND, 0);
+
+            if (calendar.getTimeInMillis() <= System.currentTimeMillis()) {
+                calendar.add(Calendar.DAY_OF_YEAR, 1);
+            }
             editor.putInt("hour_evening", timePicker.getHour()).apply();
             editor.putInt("minute_evening", timePicker.getMinute()).apply();
 
@@ -230,19 +240,22 @@ public class SettingsActivity extends AppCompatActivity {
             intent.setAction("EVENING_AZKAR");
             pendingIntent = PendingIntent.getBroadcast(this, 1, intent, PendingIntent.FLAG_IMMUTABLE);
 
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                    AlarmManager.INTERVAL_DAY, pendingIntent);
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 alarmManager.setExactAndAllowWhileIdle(
                         AlarmManager.RTC_WAKEUP,
                         calendar.getTimeInMillis(),
                         pendingIntent
                 );
-            } else {
-                alarmManager.setExact(
-                        AlarmManager.RTC_WAKEUP,
-                        calendar.getTimeInMillis(),
-                        pendingIntent
-                );
             }
+//            else {
+//                alarmManager.setExact(
+//                        AlarmManager.RTC_WAKEUP,
+//                        calendar.getTimeInMillis(),
+//                        pendingIntent
+//                );
+//            }
         });
     }
 
